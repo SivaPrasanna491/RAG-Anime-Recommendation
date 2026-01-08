@@ -5,5 +5,11 @@ langchain-text-splitters
 langchain-google-genai
 langchain-groq
 langchain-ollama
+# langchain-evaluation
 jikanpy==4.3.2
+faiss-cpu
+fastapi
+uvicorn
+streamlit
+supabase
 # -e .

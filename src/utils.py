@@ -34,3 +34,20 @@ def extract_features(data, feature_name):
         return result
     except Exception as e:
         raise CustomException(e, sys)
+
+
+def generateDocuments(row):
+    try:
+        titles = ", ".join(map(str, row['Title']))
+        genres = ", ".join(map(str, row['Genres']))
+        themes = ", ".join(map(str, row['Themes']))
+        
+        return f"""
+                Id: {row['Id']}
+                Title: {titles}
+                Genre: {genres}
+                Theme: {themes}
+                Episodes: {row['Episodes']}
+    """.strip()
+    except Exception as e:
+        raise CustomException(e, sys)

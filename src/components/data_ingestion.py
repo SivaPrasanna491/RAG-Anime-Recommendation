@@ -9,7 +9,8 @@ from src.logger import logging
 from dataclasses import dataclass
 from jikanpy import Jikan
 from src.utils import *
-
+from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTraining
 
 @dataclass
 class DataIngestionConfig():
@@ -62,11 +63,7 @@ class DataIngestion:
             os.makedirs(os.path.dirname(self.ingestion_config.data_path), exist_ok=True)
             df.to_csv(self.ingestion_config.data_path,index=False,header=True)
             return (
-                df
+                self.ingestion_config.data_path
             )
         except Exception as e:
             raise CustomException(e, sys)
-        
-if __name__=="__main__":
-    obj = DataIngestion()
-    print(obj.extract_necessary_records())
