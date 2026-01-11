@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find your perfect anime - Search by title, genre, theme, and episodes.">
+    <title>Find Anime - AnimeAI</title>
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background -->
+    <div class="form-background">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index" class="logo">
+                    <span class="logo-icon">🎌</span>
+                    <span class="logo-text">Anime<span class="highlight">AI</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="home" class="nav-link">Dashboard</a>
+                    <a href="#" class="nav-link">Profile</a>
+                    <button class="btn-logout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="form-container">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <h1 class="form-title">Find Your Perfect Anime</h1>
+                <p class="form-subtitle">Tell us what you're looking for and let AI find the best matches</p>
+            </div>
+
+            <form id="animeForm" class="anime-form">
+                <!-- Title Input -->
+                <div class="form-group">
+                    <label for="title" class="form-label">
+                        <span class="label-text">Anime Title</span>
+                        <span class="label-optional">(Optional)</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="title" 
+                        name="title" 
+                        class="form-input" 
+                        placeholder="e.g., Attack on Titan, Naruto, Death Note..."
+                    >
+                    <span class="form-hint">Search by specific anime title or leave blank for general recommendations</span>
+                </div>
+
+                <!-- Genres - Chip Selection -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <span class="label-text">Genres</span>
+                        <span class="label-badge" id="genreCount">0 selected</span>
+                    </label>
+                    <p class="form-hint">Click to select multiple genres</p>
+                    <div class="chip-container" id="genreChips">
+                        <div class="chip" data-value="Action">Action</div>
+                        <div class="chip" data-value="Adventure">Adventure</div>
+                        <div class="chip" data-value="Comedy">Comedy</div>
+                        <div class="chip" data-value="Drama">Drama</div>
+                        <div class="chip" data-value="Fantasy">Fantasy</div>
+                        <div class="chip" data-value="Horror">Horror</div>
+                        <div class="chip" data-value="Mystery">Mystery</div>
+                        <div class="chip" data-value="Romance">Romance</div>
+                        <div class="chip" data-value="Sci-Fi">Sci-Fi</div>
+                        <div class="chip" data-value="Slice of Life">Slice of Life</div>
+                        <div class="chip" data-value="Sports">Sports</div>
+                        <div class="chip" data-value="Supernatural">Supernatural</div>
+                        <div class="chip" data-value="Thriller">Thriller</div>
+                        <div class="chip" data-value="Psychological">Psychological</div>
+                        <div class="chip" data-value="Mecha">Mecha</div>
+                    </div>
+                </div>
+
+                <!-- Themes - Chip Selection -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <span class="label-text">Themes</span>
+                        <span class="label-badge" id="themeCount">0 selected</span>
+                    </label>
+                    <p class="form-hint">Click to select multiple themes</p>
+                    <div class="chip-container" id="themeChips">
+                        <div class="chip" data-value="School">School</div>
+                        <div class="chip" data-value="Military">Military</div>
+                        <div class="chip" data-value="Magic">Magic</div>
+                        <div class="chip" data-value="Demons">Demons</div>
+                        <div class="chip" data-value="Vampires">Vampires</div>
+                        <div class="chip" data-value="Time Travel">Time Travel</div>
+                        <div class="chip" data-value="Isekai">Isekai</div>
+                        <div class="chip" data-value="Martial Arts">Martial Arts</div>
+                        <div class="chip" data-value="Samurai">Samurai</div>
+                        <div class="chip" data-value="Post-Apocalyptic">Post-Apocalyptic</div>
+                        <div class="chip" data-value="Historical">Historical</div>
+                        <div class="chip" data-value="Music">Music</div>
+                        <div class="chip" data-value="Game">Game</div>
+                        <div class="chip" data-value="Survival">Survival</div>
+                        <div class="chip" data-value="Harem">Harem</div>
+                    </div>
+                </div>
+
+                <!-- Episodes Input -->
+                <div class="form-group">
+                    <label for="episodes" class="form-label">
+                        <span class="label-text">Number of Episodes</span>
+                        <span class="label-optional">(Optional)</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="episodes" 
+                        name="episodes" 
+                        class="form-input" 
+                        placeholder="e.g., 12, 24, 50..."
+                    >
+                    <span class="form-hint">Specify the number of episodes you prefer</span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    <span class="btn-icon">🔍</span>
+                    <span class="btn-text">Find Anime</span>
+                    <span class="btn-loader" style="display: none;">
+                        <span class="loader"></span>
+                    </span>
+                </button>
+
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/form.js"></script>
+</body>
+</html>

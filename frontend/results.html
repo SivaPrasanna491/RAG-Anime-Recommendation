@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your personalized anime recommendations from AnimeAI">
+    <title>Recommendations - AnimeAI</title>
+    <link rel="stylesheet" href="css/results.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background -->
+    <div class="results-background">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index" class="logo">
+                    <span class="logo-icon">🎌</span>
+                    <span class="logo-text">Anime<span class="highlight">AI</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="home" class="nav-link">Dashboard</a>
+                    <a href="form" class="nav-link">New Search</a>
+                    <button class="btn-logout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="results-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="results-header">
+                <h1>Your Anime Recommendations</h1>
+                <p class="results-subtitle">Based on your search preferences</p>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <div class="loading-spinner"></div>
+                <p>Loading recommendations...</p>
+            </div>
+
+            <!-- Error State -->
+            <div class="error-state" id="errorState" style="display: none;">
+                <div class="error-icon">⚠️</div>
+                <h2>Oops! Something went wrong</h2>
+                <p id="errorMessage">Failed to load recommendations</p>
+                <a href="form" class="btn-primary">Try Again</a>
+            </div>
+
+            <!-- Results Grid -->
+            <div class="results-grid" id="resultsGrid" style="display: none;">
+                <!-- Anime cards will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Back Button -->
+            <div class="back-button-container" id="backButton" style="display: none;">
+                <a href="form" class="btn-secondary">
+                    <span>←</span>
+                    <span>New Search</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/results.js"></script>
+</body>
+</html>

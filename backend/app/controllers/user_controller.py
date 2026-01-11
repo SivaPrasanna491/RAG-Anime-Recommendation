@@ -44,8 +44,6 @@ def signup_user(payload):
         else:
             raise HTTPException(status_code=400, detail="Signup failed")
             
-    except HTTPException:
-        raise  # Re-raise HTTP exceptions
     except Exception as e:
         error_msg = str(e).lower()
         if "already registered" in error_msg or "already exists" in error_msg or "duplicate" in error_msg:
@@ -91,6 +89,32 @@ def homePage(request):
         if email is None:
             return {"message": 'User not signed up'}
         return {"message": "User logged in successfully"}
+        
+    except Exception as e:
+        raise CustomException(e, sys)
+
+def delete_user(request):
+    """Delete user from both custom users table and Supabase Auth"""
+    try:
+        # Get token from request
+        token = request.cookies.get("access_token")
+        if not token:
+            raise HTTPException(status_code=401, detail="Not authenticated")
+        
+        # Get user info
+        user_response = client.auth.get_user(jwt=token)
+        email = user_response.user.email
+        user_id = user_response.user.id
+        
+        # Delete from custom users table
+        result = client.table("users").delete().eq("email", email).execute()
+        
+        # Delete from Supabase Auth
+        # Note: This requires admin privileges
+        # You need to use the service role key for this
+        client.auth.admin.delete_user(user_id)
+        
+        return {"message": "User deleted successfully"}
         
     except Exception as e:
         raise CustomException(e, sys)

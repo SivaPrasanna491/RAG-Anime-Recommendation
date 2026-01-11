@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your personalized anime dashboard - View your watched anime and get new recommendations.">
+    <title>Dashboard - AnimeAI</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background -->
+    <div class="dashboard-background">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index" class="logo">
+                    <span class="logo-icon">🎌</span>
+                    <span class="logo-text">Anime<span class="highlight">AI</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="home" class="nav-link active">Dashboard</a>
+                    <a href="#" class="nav-link">Profile</a>
+                    <button class="btn-logout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-container">
+        <div class="container">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div class="header-content">
+                    <h1 class="dashboard-title">Your Anime Collection</h1>
+                    <p class="dashboard-subtitle">Discover and track your favorite anime</p>
+                </div>
+                <a href="form" class="btn-primary">
+                    <span class="btn-icon">🔍</span>
+                    <span>Get More Anime</span>
+                </a>
+            </div>
+
+            <!-- Empty State (shown when no anime) -->
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">📺</div>
+                <h2 class="empty-title">No Anime Yet</h2>
+                <p class="empty-description">
+                    You haven't explored any anime yet. Start your journey by getting personalized recommendations!
+                </p>
+                <a href="form" class="btn-empty">
+                    <span class="btn-icon">✨</span>
+                    <span>Get More Anime</span>
+                </a>
+            </div>
+
+            <!-- Anime Grid (shown when anime exist) -->
+            <div class="anime-grid" id="animeGrid" style="display: none;">
+                <!-- Anime cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

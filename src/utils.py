@@ -47,7 +47,17 @@ def generateDocuments(row):
                 Title: {titles}
                 Genre: {genres}
                 Theme: {themes}
-                Episodes: {row['Episodes']}
-    """.strip()
+                Episodes: {row['Episodes']},
+                ImageURLS: {row['ImageURLS']}
+""".strip()
+    except Exception as e:
+        raise CustomException(e, sys)
+
+def generateImage(data):
+    try:
+        urls = []
+        for i in range(0, len(data)):
+            urls.append(data[i]['images']['jpg']['large_image_url'])
+        return urls
     except Exception as e:
         raise CustomException(e, sys)

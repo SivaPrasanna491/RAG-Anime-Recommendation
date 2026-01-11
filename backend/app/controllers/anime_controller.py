@@ -6,15 +6,20 @@ from src.logger import logging
 from backend.app.utils.supabase_client import client
 from fastapi import Cookie, Header, HTTPException
 from fastapi import Request
+from src.utils import generateImage
 
 def generateRecommendations(payload, request):
     try:
+        token = request.cookies.get("access_token")
+        if token is None:
+            return {"message": "User not authenticated"}
         retrieval_chain = request.app.state.retrieval_chain
         logging.info(f"Generating recommendations for query: {payload.query}")
         
         response = retrieval_chain.invoke(payload.query)
         
         logging.info(f"LLM Response: {response}")
+        print(f"LLM response: {response}")
         
         return {
             "message": response.message,
@@ -22,10 +27,11 @@ def generateRecommendations(payload, request):
                 {
                     "title": rec.title,
                     "genre": rec.genre,
+                    "url": rec.url,
                     "reason": rec.reason
                 }
                 for rec in response.recommendations
-            ]
+            ],
         }
             
     except Exception as e:

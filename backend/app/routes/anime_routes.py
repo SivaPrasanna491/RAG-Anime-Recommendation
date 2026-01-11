@@ -24,6 +24,7 @@ class GetAnime(BaseModel):
 def get_recommendations_route(payload: RecommendAnimes, request: Request):
     try:
         result = generateRecommendations(payload=payload, request=request)
+        print(f"Result: {result}")
         return JSONResponse(content=result['recommendations'])
     except Exception as e:
         raise CustomException(e, sys)
